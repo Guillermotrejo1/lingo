@@ -23,7 +23,7 @@ type Props = {
     }
 
     startTransition(() => {
-      upsertUserProgress(id)
+      upsertUserProgress(id);
     })
    };
 
@@ -35,7 +35,7 @@ type Props = {
             id={(course.id)} 
             title={course.title} 
             imageSrc={course.imageSrc} 
-            onClick={() => {}} 
+            onClick={onClick} 
             disabled={false} 
             active={(course.id) === activeCourseId} 
           />
