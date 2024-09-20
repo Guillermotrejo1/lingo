@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 
 import db from "@/db/drizzle";
-import { userProgress } from "@/db//schema";
+import { courses, userProgress } from "@/db//schema";
 
 export const getUserProgress = cache(async () => {
     const { userId } = await auth()
@@ -27,3 +27,13 @@ export const getCourses = cache(async () => {
   return data;
 });
 //this is so i dont have to all props every time
+
+
+export const getCoursesById = cache(async (courseId: number) => {
+    const data = await db.query.courses.findFirst({
+        where: eq(courses.id, courseId)
+        // TODO: Populate units and lessons
+    });
+
+    return data
+});
