@@ -1,6 +1,14 @@
 "use client"
 
+import Link from "next/link";
+
 import { Check, Crown, Star } from "lucide-react";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+import "react-circular-progressbar/dist/styles.css"
 
 type Props = {
     id: number;
@@ -47,8 +55,28 @@ export const LessonButton = ({
     const href = isCompleted ? `/lesson${id}` : "/lesson"
 
     return (
-        <div>
-            {id}
-        </div>
+        <Link
+        href={href}
+        aria-disabled={locked}
+        style={{pointerEvents: locked ? "none" : "auto"}}
+        >
+            <div className="relative"
+            style={{
+                right: `${rightPosition}px`,
+                marginTop: isFirst && !isCompleted ? 60 : 24,
+
+            }}
+            >
+                {current ? (
+                    <div>
+                        Current
+                    </div>
+                ) : (
+                    <div>
+                        something
+                    </div>
+                )}
+            </div>
+        </Link>
     )
 }
