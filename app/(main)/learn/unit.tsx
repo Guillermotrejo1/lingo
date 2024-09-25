@@ -21,7 +21,7 @@ type Props = {
 
 export const Unit = ({
     // id,
-    // order,
+    // order, // commented it out to avoid the error since its not in use right now
     title,
     description,
     lessons,
