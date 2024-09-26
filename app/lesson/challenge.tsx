@@ -35,7 +35,7 @@ return (
             selected={selectedOption === option.id}
             onClick={() => onSelect(option.id)}
             status={status}
-            audioSrc={option.audioSrc}
+            audioSrc={option.audio}
             disabled={disabled}
             type={type}
             />

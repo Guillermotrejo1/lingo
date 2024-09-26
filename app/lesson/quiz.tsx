@@ -68,7 +68,7 @@ export const Quiz = ({
                 options={options}
                 onSelect={() => {}}
                 status="none"
-                selectedOption={1} //hardcoded to avoid error
+                selectedOption={0} //hardcoded to avoid error
                 disabled={false}
                 type={challenge.type}
                 />
