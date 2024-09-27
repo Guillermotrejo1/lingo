@@ -85,3 +85,5 @@ export const Card = ({
     </div>
   );
 };
+
+//responsive issue in smaller breakpoint, may be due to image size
