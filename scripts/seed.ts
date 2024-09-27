@@ -100,7 +100,7 @@ const main = async () => {
       {
         id: 1,
         challengeId: 1,
-        imageSrc: "/player.png", //which one of these is "the man"?
+        imageSrc: "/man.png", //which one of these is "the man"?
         correct: true,
         text: "el hombre",
         audio: "/es_man.mp3"
@@ -116,7 +116,7 @@ const main = async () => {
       {
         id: 3,
         challengeId: 1,
-        imageSrc: "/zombie.png",
+        imageSrc: "/robot.png",
         correct: false,
         text: "el robot",
         audio: "/es_robot.mp3"
