@@ -6,7 +6,7 @@ type Props = {
     options: typeof challengeOptions.$inferSelect[];
     onSelect: (id: number) => void;
     status: "correct" | "wrong" | "none"
-    selectedOption: number;
+    selectedOption: number | undefined;
     disabled?: boolean;
     type: typeof challenges.$inferSelect["type"]
 }

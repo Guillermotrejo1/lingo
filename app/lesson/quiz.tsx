@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
+import { Footer } from "./footer";
 
 type Props = {
   initialPercentage: number;
@@ -26,19 +27,32 @@ export const Quiz = ({
 }: Props) => {
   const [hearts, setHearts] = useState(initialHearts);
   const [percentage, setPercentage] = useState(initialPercentage);
-  const [challenges] = useState(initialLessonChallenges)
+  const [challenges] = useState(initialLessonChallenges);
   const [activeIndex, setActiveIndex] = useState(() => {
-    const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed)
+    const uncompletedIndex = challenges.findIndex(
+      (challenge) => !challenge.completed
+    );
 
     return uncompletedIndex === -1 ? 0 : uncompletedIndex;
   });
 
-  const challenge = challenges[activeIndex];
-  const options = challenge?.challengeOptions ?? []
+  const [selectedOption, setSelectedOption] = useState<number>();
+  const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
-  const title = challenge.type === "ASSIST"
-  ? "Select the correct meaning"
-  : challenge.question;
+  const challenge = challenges[activeIndex];
+  const options = challenge?.challengeOptions ?? [];
+
+  const onSelect = (id: number) => {
+    if (status !== "none") return;
+
+    setSelectedOption(id);
+  }
+
+  const title =
+    challenge.type === "ASSIST"
+      ? "Select the correct meaning"
+      : challenge.question;
+      
 
   return (
     <>
@@ -60,22 +74,29 @@ export const Quiz = ({
               {title}
             </h1>
             <div>
-                {/* change back to type assist */}
-                {challenge.type === "ASSIST" && (
-                    <QuestionBubble question={challenge.question} />
-                )}
-                <Challenge
+              {/* change back to type assist */}
+              {challenge.type === "ASSIST" && (
+                <QuestionBubble question={challenge.question} />
+              )}
+              <Challenge
                 options={options}
-                onSelect={() => {}}
-                status="none"
-                selectedOption={0} //hardcoded to avoid error
+                onSelect={onSelect}
+                status={status}
+                selectedOption={selectedOption} //type error, i used or undefined in the challenge component to try and fix
                 disabled={false}
                 type={challenge.type}
-                />
+              />
             </div>
           </div>
         </div>
       </div>
+      <Footer
+      disabled={!selectedOption}
+      status={status}
+      onCheck={() => {}}
+      />
     </>
   );
 };
+
+// im not able to selcet my cards with my keys TODO 6:30:19
