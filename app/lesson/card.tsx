@@ -60,8 +60,8 @@ useKey(shortcut, handleClick, {}, [handleClick]);
       {audio}
       {imageSrc && (
         <div
-          className="relative aspect-square mb-4 max-h-[80px]
-        lg:max-h-[150px] w-full"
+          className="relative aspect-square mb-4 max-h-[90px]
+        lg:max-h-[150px] w-full" // play roud with with for responsiveness and maybe change the image, might be too small for w-full
         >
           <Image src={imageSrc} fill alt={text} />
         </div>
