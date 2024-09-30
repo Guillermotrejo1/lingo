@@ -107,6 +107,8 @@ export const Quiz = ({
       ? "Select the correct meaning"
       : challenge.question;
 
+      console.log(title)
+
   return (
     <>
       <Header

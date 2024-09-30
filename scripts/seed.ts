@@ -97,7 +97,7 @@ const main = async () => {
       {
         id: 2,
         lessonsId: 1,
-        type: "SELECT",
+        type: "ASSIST",
         order: 2,
         question: '"the man"',
       },
@@ -163,19 +163,22 @@ const main = async () => {
 
     await db.insert(schema.challengeOptions).values([
       {
-        challengeId: 3, //which one of these is "the robot"?
+        challengeId: 3,
+        imageSrc: "/man.png", //which one of these is "the robot"?
         correct: false,
         text: "el hombre",
         audio: "/es_man.mp3"
       },
       {
         challengeId: 3,
+        imageSrc: "/female.png",
         correct: false,
         text: "la mujer",
         audio: "/es_woman.mp3"
       },
       {
         challengeId: 3,
+        imageSrc: "/robot.png",
         correct: true,
         text: "el robot",
         audio: "/es_robot.mp3"
