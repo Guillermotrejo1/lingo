@@ -9,9 +9,11 @@ import { Footer } from "./footer";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
-import { useAudio } from "react-use";
+import { useAudio, useWindowSize } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
+import { useRouter } from "next/navigation";
+import Confetti from "react-confetti"
 
 type Props = {
   initialPercentage: number;
@@ -31,6 +33,11 @@ export const Quiz = ({
   initialLessonChallenges,
   userSubcription,
 }: Props) => {
+ const { width, height } = useWindowSize();
+
+ const router = useRouter()
+
+  const [finishAudio] = useAudio({ src: "/finish.mp3", autoPlay: true });
   const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
 
   const [incorrectAudio, _i, incorrectControls] = useAudio({
@@ -130,9 +137,17 @@ export const Quiz = ({
     }
   };
 
-  if (true || !challenge) {
+  if (!challenge) {
     return (
       <>
+      {finishAudio}
+      <Confetti
+      width={width}
+      height={height}
+      recycle={false}
+      numberOfPieces={500}
+      tweenDuration={10000}
+      />
         <div
           className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto
             text-center items-center justify-center h-full"
@@ -165,7 +180,7 @@ export const Quiz = ({
         <Footer
         lessonId={lessonId}
         status="completed"
-        onCheck={() => {}} />
+        onCheck={() => router.push("/learn")} />
       </>
     );
   }
