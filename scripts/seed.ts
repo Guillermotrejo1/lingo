@@ -90,7 +90,7 @@ const main = async () => {
       {
         id: 1,
         lessonsId: 1,
-        type: "SELECT",
+        type: "SELECT",  //nouns
         order: 1,
         question: 'Which one of these is "the man"?',
       },
@@ -182,6 +182,30 @@ const main = async () => {
         correct: true,
         text: "el robot",
         audio: "/es_robot.mp3"
+      },
+    ]);
+
+    await db.insert(schema.challenges).values([
+      {
+        id: 4,
+        lessonsId: 2,  //Verbs
+        type: "SELECT",
+        order: 1,
+        question: 'Which one of these is "the man"?',
+      },
+      {
+        id: 5,
+        lessonsId: 2,
+        type: "ASSIST",
+        order: 2,
+        question: '"the man"',
+      },
+      {
+        id: 6,
+        lessonsId: 2,
+        type: "SELECT",
+        order: 3,
+        question: 'Which one of these is "the robot"?',
       },
     ]);
    
