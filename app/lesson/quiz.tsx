@@ -190,7 +190,7 @@ export const Quiz = ({
 
   const title =
     challenge.type === "ASSIST"
-      ? "Select the correct meaning"
+      ? "Select The Correct Meaning"
       : challenge.question;
 
   return (
