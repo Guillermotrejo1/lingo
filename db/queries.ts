@@ -88,7 +88,16 @@ export const getCourses = cache(async () => {
 export const getCoursesById = cache(async (courseId: number) => {
   const data = await db.query.courses.findFirst({
     where: eq(courses.id, courseId),
-    // TODO: Populate units and lessons
+    with: {
+      units: {
+        orderBy: (units, {asc}) => [asc(units.order)],
+        with: {
+          lessons: {
+            orderBy: (lessons, {asc}) => [asc(lessons.order)],
+          },
+        },
+      },
+    },
   });
 
   return data;
