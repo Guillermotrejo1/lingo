@@ -8,9 +8,8 @@ import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import db from "@/db/drizzle";
 import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
+import { POINTS_TO_REFILL } from "@/constants";
 
-// TODO: Move alongside Item component into common file
-const POINTS_TO_REFILL = 10;
 
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth();
