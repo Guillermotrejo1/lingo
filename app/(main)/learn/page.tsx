@@ -15,6 +15,7 @@ import { UserProgress } from "@/components/user-progress"
 import { Unit } from "./unit"
 import { Header } from "./header"
 import { Promo } from "@/components/promo"
+import { Quests } from "@/components/quest"
 
 const LearnPage = async () => {
  const userProgressData = getUserProgress();
@@ -60,6 +61,7 @@ const LearnPage = async () => {
         {!isPro && (
           <Promo />
         )}
+        <Quests points={userProgress.points}/>
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
