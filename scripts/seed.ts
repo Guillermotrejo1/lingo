@@ -115,7 +115,7 @@ const main = async () => {
       {
         id: 1,
         challengeId: 1,
-        imageSrc: "/man.png", //which one of these is "the man"?
+        imageSrc: "/man.svg", //which one of these is "the man"?
         correct: true,
         text: "el hombre",
         audio: "/es_man.mp3"
@@ -123,7 +123,7 @@ const main = async () => {
       {
         id: 2,
         challengeId: 1,
-        imageSrc: "/female.png",
+        imageSrc: "/woman.svg",
         correct: false,
         text: "la mujer",
         audio: "/es_woman.mp3"
@@ -131,7 +131,7 @@ const main = async () => {
       {
         id: 3,
         challengeId: 1,
-        imageSrc: "/robot.png",
+        imageSrc: "/robot.svg",
         correct: false,
         text: "el robot",
         audio: "/es_robot.mp3"
@@ -165,21 +165,21 @@ const main = async () => {
     await db.insert(schema.challengeOptions).values([
       {
         challengeId: 3,
-        imageSrc: "/man.png", //which one of these is "the robot"?
+        imageSrc: "/man.svg", //which one of these is "the robot"?
         correct: false,
         text: "el hombre",
         audio: "/es_man.mp3"
       },
       {
         challengeId: 3,
-        imageSrc: "/female.png",
+        imageSrc: "/woman.svg",
         correct: false,
         text: "la mujer",
         audio: "/es_woman.mp3"
       },
       {
         challengeId: 3,
-        imageSrc: "/robot.png",
+        imageSrc: "/robot.svg",
         correct: true,
         text: "el robot",
         audio: "/es_robot.mp3"

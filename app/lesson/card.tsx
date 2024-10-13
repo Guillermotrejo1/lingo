@@ -60,7 +60,7 @@ useKey(shortcut, handleClick, {}, [handleClick]);
       {imageSrc && (
         <div
           className="relative aspect-square mb-4 max-h-[90px]
-        lg:max-h-[150px] w-full" // play roud with with for responsiveness and maybe change the image, might be too small for w-full
+        lg:max-h-[150px] w-full" 
         >
           <Image src={imageSrc} fill alt={text} />
         </div>
@@ -100,4 +100,4 @@ useKey(shortcut, handleClick, {}, [handleClick]);
   );
 };
 
-//responsive issue in smaller breakpoint, may be due to image size video at 6:17:22
+
