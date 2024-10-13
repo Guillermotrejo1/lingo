@@ -18,8 +18,9 @@ export async function POST(req: Request) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
-  } catch (err: any) {
-    return new NextResponse(`Webhook error: ${err.message}`, { status: 400 });
+  } catch (err: unknown) {
+    const error = err as Error;
+    return new NextResponse(`Webhook error: ${error.message}`, { status: 400 });
   }
 
   const session = event.data.object as Stripe.Checkout.Session;
